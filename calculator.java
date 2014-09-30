@@ -49,50 +49,50 @@ public class calculator extends JFrame {
 
 
 		  txt1 = new JTextField(Integer.toString(num));
-		  txt1.setBounds(0, 10, 300, 30);
-
+		  txt1.setBounds(40, 30, 204, 30);
+		  txt1.setEditable(false);
 		  panel.add(txt1);
 		
 
 	
 	  	for(i = 0; i < c.length/4; i++){
 			c[i] = new JButton(btn[i]);
-			c[i].setBounds(51*i,50, 50,30);
+			c[i].setBounds(51*i+40,70, 50,30);
 
 			c[i].addMouseListener(new MouseL(i));
 			panel.add(c[i]);
 
 			c[i+4] = new JButton(btn[i+4]);
-			c[i+4].setBounds(51*i,81, 50,30);
+			c[i+4].setBounds(51*i+40,101, 50,30);
 			c[i+4].addMouseListener(new MouseL(i+4));
 
 			panel.add(c[i+4]);
 
 			c[i+8] = new JButton(btn[i+8]);
-			c[i+8].setBounds(51*i,112, 50,30);
+			c[i+8].setBounds(51*i+40,132, 50,30);
 			c[i+8].addMouseListener(new MouseL(i+8));
 
 			panel.add(c[i+8]);
 
 			c[i+12] = new JButton(btn[i+12]);
-			c[i+12].setBounds(51*i,143, 50,30);
+			c[i+12].setBounds(51*i+40,163, 50,30);
 			c[i+12].addMouseListener(new MouseL(i+12));
 
 			panel.add(c[i+12]);
 	  	}
 
 		  a[0] = new JButton(restBtn[0]);
-		  a[0].setBounds(0, 174, 101, 30);	
+		  a[0].setBounds(40, 194, 101, 30);	
 		  a[0].addMouseListener(new MouseL(100));
 		  panel.add(a[0]);
 			
 		  a[1] = new JButton(restBtn[1]);
-		  a[1].setBounds(102, 174, 50, 30);
+		  a[1].setBounds(142, 194, 50, 30);
 		  a[1].addMouseListener(new MouseL(101));
 		  panel.add(a[1]);
 
 		  a[2] = new JButton(restBtn[2]);
-		  a[2].setBounds(153, 174, 50, 30);
+		  a[2].setBounds(193, 194, 50, 30);
 		  a[2].addMouseListener(new MouseL(102));
 		  add(a[2]);
 	
@@ -100,18 +100,11 @@ public class calculator extends JFrame {
 
           getContentPane().add(panel);
 
-          setPreferredSize(new Dimension(485, 345));
+          setPreferredSize(new Dimension(295, 295));
     }
 
 
-     public static void main(String[] args) {
-                    JFrame.setDefaultLookAndFeelDecorated(true);
-                    calculator frame = new calculator();
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-       
-     }
+     
 
 	class MouseL implements MouseListener  {
 
@@ -122,7 +115,7 @@ public class calculator extends JFrame {
 			index1 = index;	
 		}
 
-		public void mouseClicked(MouseEvent event) {
+		public void mousePressed(MouseEvent event) {
 
 			// show entered numbers
 			if((index1 > 3 && index1 <7) || (index1 >7 && index1 <11) || (index1 >11 && index1 < 15) || (index1 == 100 && Double.parseDouble(txt1.getText()) != 0 ))
@@ -249,7 +242,7 @@ public class calculator extends JFrame {
  
 		public void mouseEntered(MouseEvent event) {}
 		public void mouseExited(MouseEvent event) {}
-		public void mousePressed(MouseEvent event) {} 
+		public void mouseClicked(MouseEvent event) {} 
 		public void mouseReleased(MouseEvent event) {}
  
 	}
@@ -324,7 +317,16 @@ public class calculator extends JFrame {
 	    return count;
 	}
 
-
+	public static void main(String[] args) {
+                  //  JFrame.setDefaultLookAndFeelDecorated(true);
+                    calculator frame = new calculator();
+ 
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setResizable(false);
+                    frame.setVisible(true);
+       
+     }
 
 
 }
